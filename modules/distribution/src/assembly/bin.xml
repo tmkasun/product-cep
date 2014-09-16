@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- ~ Copyright (c) 2005-2013, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- ~
- ~ WSO2 Inc. licenses this file to you under the Apache License,
- ~ Version 2.0 (the "License"); you may not use this file except
- ~ in compliance with the License.
- ~ You may obtain a copy of the License at
- ~
- ~    http://www.apache.org/licenses/LICENSE-2.0
- ~
- ~ Unless required by applicable law or agreed to in writing,
- ~ software distributed under the License is distributed on an
- ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- ~ KIND, either express or implied.  See the License for the
- ~ specific language governing permissions and limitations
- ~ specific language governing permissions and limitations
- ~ under the License.
- -->
+~ Copyright (c) 2005-2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+~
+~ WSO2 Inc. licenses this file to you under the Apache License,
+~ Version 2.0 (the "License"); you may not use this file except
+~ in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~    http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing,
+~ software distributed under the License is distributed on an
+~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~ KIND, either express or implied.  See the License for the
+~ specific language governing permissions and limitations
+~ under the License.
+-->
 <assembly>
     <formats>
         <format>zip</format>
@@ -292,6 +291,15 @@
             </outputDirectory>
         </fileSet>
 
+        <fileSet>
+            <directory> ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/deployment/server/webapps</directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/deployment/server/webapps
+            </outputDirectory>
+            <includes>
+                <include>inputwebsocket.war</include>
+                <include>outputwebsocket.war</include>
+            </includes>
+        </fileSet>
 
         <!-- Copying WSO2-CARBON-PATCH-4.2.0-0001 files to patches directory -->
        <!-- <fileSet>
@@ -412,7 +420,7 @@
         <!--Copying class loading files -->
 
         <file>
-            <source>repository/conf/webapp-classloading.xml</source>
+            <source>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/tomcat/webapp-classloading.xml</source>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/tomcat/
             </outputDirectory>
             <filtered>true</filtered>
@@ -420,7 +428,7 @@
         </file>
 
         <file>
-            <source>repository/conf/webapp-classloading-environments.xml</source>
+            <source>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/tomcat/webapp-classloading-environments.xml</source>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/tomcat/
             </outputDirectory>
             <filtered>true</filtered>
@@ -428,7 +436,7 @@
         </file>
 
         <file>
-            <source>repository/conf/context.xml</source>
+            <source>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/tomcat/context.xml</source>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/tomcat/
             </outputDirectory>
             <filtered>true</filtered>
@@ -480,9 +488,6 @@
             <filtered>true</filtered>
             <fileMode>644</fileMode>
         </file>
-
-
-
 
         <!--data bridge web app-->
         <!--restapi is deprecated-->
@@ -606,6 +611,14 @@
             </source>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/etc</outputDirectory>
             <filtered>true</filtered>
+        </file>
+        <file>
+             <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/etc/cassandra-environments.xml
+            </source>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/etc</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>644</fileMode>
         </file>
 
         <!-- UES integration config files -->
